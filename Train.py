@@ -1,18 +1,18 @@
 from ultralytics import settings, YOLO
 
 # Set datasets directory
-settings.update({"datasets_dir": "/Users/bennettpotter/Desktop/Coding/AI-Birds/Bird-AI-ID/datasets"})
+settings.update({"datasets_dir": "/Users/bennettpotter/Desktop/Coding/AI-Birds/Bird-AI-ID/datasets/train"})
 
 # Load model
 model = YOLO("yolo26n-cls.pt")
 
 # Train the model
 model.train(
-    epochs=20,
+    epochs=1,
     imgsz=256,
     device="mps",
     verbose=False,
-    data="/Users/bennettpotter/Desktop/Coding/AI-Birds/Bird-AI-ID/datasets/nz_birds_dataset",
+    data="/Users/bennettpotter/Desktop/Coding/AI-Birds/Bird-AI-ID/datasets/nz_birds_dataset_split",
     patience=15
 )
 
