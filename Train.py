@@ -1,7 +1,7 @@
 from ultralytics import settings, YOLO
 
 # Set datasets directory
-settings.update({"datasets_dir": "/Users/bennettpotter/Desktop/Coding/AI-Birds/Bird-AI-ID/datasets/train"})
+settings.update({"datasets_dir": "path to data set"})
 
 # Load model
 model = YOLO("yolo26n-cls.pt")
@@ -12,13 +12,13 @@ model.train(
     imgsz=256,
     device="mps",
     verbose=False,
-    data="/Users/bennettpotter/Desktop/Coding/AI-Birds/Bird-AI-ID/datasets/nz_birds_dataset_split",
+    data="path to data set",
     patience=15
 )
 
 # Run inference on images (replace source with your image file or directory path)
 results = model.predict(
-    source="/Users/bennettpotter/Desktop/Coding/AI-Birds/Bird-AI-ID/datasets/nz_birds_dataset_split/val",
+    source="path to data set",
     imgsz=256,
     device="mps"
 )
