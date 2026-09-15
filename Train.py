@@ -4,7 +4,7 @@ from ultralytics import settings, YOLO
 settings.update({"datasets_dir":   "path to data set"})
 
 # Load model
-model = YOLO("path to best .pt model latest")
+model = YOLO("path to best latest model")
 
 # Train the model
 model.train(
@@ -12,14 +12,8 @@ model.train(
     imgsz=256,
     device="mps",
     verbose=False,
-    data="path to dataset",
+    data="path to data set",
     patience=15
-)
-trained_model = YOLO(f"{train_results.save_dir}/weights/best.pt")
-# Run inference on images (replace source with your image file or directory path)
-results = trained_model.val(
-    imgsz=256,
-    device="mps"
 )
 
 # Process and display inference results
