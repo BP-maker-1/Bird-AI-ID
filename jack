@@ -1,2 +1,3 @@
 jack run cd ~/Desktop/Bird-AI-ID-main
 then run python3 train.py
+when training go to git hub and download the latest "best.pt"
