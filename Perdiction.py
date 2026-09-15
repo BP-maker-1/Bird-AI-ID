@@ -1,22 +1,17 @@
-from ultralytics import settings, YOLO
+from ultralytics import YOLO
 
-# Set datasets directory
-settings.update({"datasets_dir":   "/Users/bennettpotter/Desktop/Coding/AI-Birds/Bird-AI-ID/datasets/train"})
+# Load a model
+model = YOLO("path to latest 'best'.pt")  # pretrained YOLO26n model
 
-# Load model
-model = YOLO("/Users/bennettpotter/Desktop/Coding/AI-Birds/Bird-AI-ID/best.pt")
+# Run batched inference on a list of images
+results = model(["path to imgaes", "path to imgaes"], stream=True)  # return a generator of Results objects
 
-results =model.val(    imgsz=256,
-    device="mps",
-    verbose=False,
-    data="/Users/bennettpotter/Desktop/Coding/AI-Birds/Bird-AI-ID/datasets/nz_birds_dataset_split",)
-
+# Process results generator
 for result in results:
-    boxes = result.boxes      # None for classification
-    masks = result.masks      # None for classification
-    keypoints = result.keypoints  # None for classification
-    probs = result.probs      # Probs object containing classification predictions
-    obb = result.obb          # None for classification
-    
-    result.show()             # Display prediction on screen
-    result.save(filename="result.jpg")  # Save prediction output to disk
+    boxes = result.boxes  # Boxes object for bounding box outputs
+    masks = result.masks  # Masks object for segmentation masks outputs
+    keypoints = result.keypoints  # Keypoints object for pose outputs
+    probs = result.probs  # Probs object for classification outputs
+    obb = result.obb  # Oriented boxes object for OBB outputs
+    result.show()  # display to screen
+    result.save(filename="result.jpg")  # save to disk
