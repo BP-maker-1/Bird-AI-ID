@@ -1,0 +1,2 @@
+jack run cd ~/Desktop/Bird-AI-ID-main
+then run python3 train.py
